@@ -90,10 +90,13 @@ int main(int argc, char* argv[]) {
   char buff[size];
   address_book.SerializeToArray(buff, size);
   std::string s = address_book.SerializeAsString();
-  //address_book.ParseFromString(s);
-  //std::cout << address_book.people(0).email() << "\n";
-  address_book.ParseFromArray(buff, size);
-  std::cout << address_book.people(0).email() << "\n";
+  tutorial::AddressBook address_book_1;
+  address_book_1.ParseFromString(s);
+  std::cout << address_book_1.people(0).email() << "\n";
+
+  tutorial::AddressBook address_book_2;
+  address_book_2.ParseFromArray(buff, size);
+  std::cout << address_book_2.people(0).email() << "\n";
 
   // Optional:  Delete all global objects allocated by libprotobuf.
   google::protobuf::ShutdownProtobufLibrary();
